@@ -1,3 +1,4 @@
+/* globals chrome */
 function getCurrentTab (callback) {
   const queryInfo = {
     active: true,
@@ -22,7 +23,7 @@ function getCurrentTabUrl(callback) {
     }
 
     let url = tab.url || ''
-    console.assert(typeof url == 'string', 'tab.url should be a string')
+    console.assert(typeof url == 'string', 'tab.url should be a string') // eslint-disable-line no-console
 
     callback(url)
   })
@@ -34,7 +35,7 @@ function updateCurrentTabUrl (newUrl) {
       return
     }
 
-    chrome.tabs.update(tab.id, {url: newUrl})
+    chrome.tabs.update(tab.id, { url: newUrl })
   })
 }
 

@@ -18,7 +18,30 @@ const fields = (state = [], action) => {
 
       state = [].concat(state)
 
-      console.log('--> state is:', state)
+      const field = state.filter(f => f.id === action.id)[0]
+
+      if (!field) {
+        return state
+      }
+
+      field.value = action.value
+
+      return state
+    }
+    case 'UPDATE_NESTED_FIELD': {
+      if (!action.id) {
+        return state
+      }
+
+      if (!action.key) {
+        return state
+      }
+
+      if (!action.value && action.value !== '') {
+        return state
+      }
+
+      state = [].concat(state)
 
       const field = state.filter(f => f.id === action.id)[0]
 
@@ -26,10 +49,13 @@ const fields = (state = [], action) => {
         return state
       }
 
-      console.log('--> field is:', field)
-      console.log('--> action is:', action)
+      const nestedField = field.value.filter(f => f.key === action.key)[0]
 
-      field.value = action.value
+      if (!nestedField) {
+        return state
+      }
+
+      nestedField.value = action.value
 
       return state
     }

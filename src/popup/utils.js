@@ -1,3 +1,4 @@
+/* globals chrome */
 import qs from 'qs'
 import { setFields } from './actions/fields'
 import { setURL } from './actions/url'
@@ -6,7 +7,7 @@ import store from './store'
 const utils = {}
 
 utils.fetchURL = (cb) => {
-  chrome.runtime.sendMessage({action: 'fetchURL'}, (response) => {
+  chrome.runtime.sendMessage({ action: 'fetchURL' }, (response) => {
     cb(response.url)
   })
 }
@@ -14,12 +15,12 @@ utils.fetchURL = (cb) => {
 utils.buildURL = (url, fields) => {
   const transformed = {}
   fields.forEach(f => {
-    if (typeof f.value === 'object') {
+    if (Array.isArray(f.value)) {
       const value = {}
-      for (let key in f.value) {
-        const modifiedKey = key.replace('[', '').replace(']', '')
-        value[modifiedKey] = f.value[key]
-      }
+      f.value.forEach(a => {
+        const key = a.key.replace('[', '').replace(']', '')
+        value[key] = a.value
+      })
 
       transformed[f.name] = value
     } else {
@@ -52,10 +53,22 @@ utils.getFields = (querystring) => {
   const fields = []
   const parsedFields = qs.parse(querystring, { depth: 0, plainObjects: false })
   for (const name in parsedFields) {
+    let value = parsedFields[name]
+    if (typeof value === 'object') {
+      const arr = []
+      for (let f in value) {
+        arr.push({
+          key: f,
+          value: value[f]
+        })
+      }
+
+      value = arr
+    }
     fields.push({
       id: id,
       name: name,
-      value: parsedFields[name]
+      value: value
     })
     id += 1
   }

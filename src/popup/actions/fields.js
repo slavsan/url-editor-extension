@@ -12,3 +12,12 @@ export const updateField = ({ id, value }) => {
     value
   }
 }
+
+export const updateNestedField = ({ id, key, value }) => {
+  return {
+    type: 'UPDATE_NESTED_FIELD',
+    id,
+    key,
+    value
+  }
+}

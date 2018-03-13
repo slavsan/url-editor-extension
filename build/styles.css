@@ -14,6 +14,23 @@ body {
 
 .toolbar {
   padding: 5px;
+  background: #eee;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.toolbar button {
+  background: cornflowerblue;
+  color: #fff;
+  text-shadow: none;
+  border: 1px solid transparent;
+}
+
+.toolbar input {
+  border-radius: .25rem;
+  margin-right: 5px;
 }
 
 .fields-list {
@@ -21,7 +38,7 @@ body {
   overflow-y: auto;
 }
 
-.no-querystring {
+.no-results {
   padding: 10px;
 }
 
@@ -29,12 +46,14 @@ label {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100px;
-}
-
-.table td {
-  vertical-align: middle;
+  padding-top: 5px;
+  padding-bottom: 0;
 }
 
 td:first-child {
   width: 100px;
+}
+
+.table {
+  margin-bottom: 0;
 }

@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ControlLabel, FormControl, Table, Button } from 'react-bootstrap'
-import store from './store'
+import { oneOfType, number, shape, string } from 'prop-types'
 import utils from './utils'
-import { updateField } from './actions/fields'
 import FieldsList from './FieldsList'
 import Toolbar from './Toolbar'
 
@@ -18,7 +16,7 @@ const mapStateToProps = state => {
 const App = ({ fields }) => {
   if (!fields || !fields.length) {
     return (
-      <div className="no-querystring">The URL has no query string</div>
+      <div className="no-results">The URL has no query string</div>
     )
   }
 
@@ -30,6 +28,20 @@ const App = ({ fields }) => {
       </div>
     </div>
   )
+}
+
+App.propTypes = {
+  fields: shape({
+    id: number,
+    name: string,
+    value: oneOfType(
+      string,
+      shape({
+        key: string,
+        value: string
+      })
+    )
+  })
 }
 
 export default connect(mapStateToProps)(App)
