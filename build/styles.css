@@ -1,0 +1,40 @@
+body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    min-width: 560px;
+}
+
+#app {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 560px;
+}
+
+.toolbar {
+  padding: 5px;
+}
+
+.fields-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.no-querystring {
+  padding: 10px;
+}
+
+label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+td:first-child {
+  width: 100px;
+}

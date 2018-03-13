@@ -1,0 +1,19 @@
+{
+  "name": "URL Editor Extension",
+  "manifest_version": 2,
+  "description": "Extension for editing the querystring fields in a URL",
+  "version": "1.0",
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "URL Editor"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ]
+}
