@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import { arrayOf, func, oneOfType, number, shape, string } from 'prop-types'
 import { ControlLabel, FormGroup, FormControl, Table } from 'react-bootstrap'
 import { updateField, updateNestedField } from './actions/fields'
+import utils from './utils'
 
 const mapStateToProps = state => {
   return {
+    url: state.url,
     fields: state.fields,
     visibleFields: state.fields.filter(f => {
       return f.name.includes(state.filter)
@@ -13,7 +15,7 @@ const mapStateToProps = state => {
   }
 }
 
-const FieldsList = ({ dispatch, fields, visibleFields }) => {
+const FieldsList = ({ dispatch, url, fields, visibleFields }) => {
   return (
     <div>
       <Table>
@@ -36,6 +38,11 @@ const FieldsList = ({ dispatch, fields, visibleFields }) => {
                           type="text"
                           value={f.value}
                           spellCheck={false}
+                          onKeyUp={(e) => {
+                            if (e.keyCode === 13) {
+                              utils.changeURL(utils.buildURL(url, fields))
+                            }
+                          }}
                           onChange={e => {
                             dispatch(updateNestedField({
                               id: field.id,
@@ -52,6 +59,11 @@ const FieldsList = ({ dispatch, fields, visibleFields }) => {
                     type="text"
                     value={field.value}
                     spellCheck={false}
+                    onKeyUp={(e) => {
+                      if (e.keyCode === 13) {
+                        utils.changeURL(utils.buildURL(url, fields))
+                      }
+                    }}
                     onChange={e => {
                       dispatch(updateField({
                         id: field.id,
