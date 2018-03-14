@@ -1,8 +1,8 @@
 /* globals chrome */
 import qs from 'qs'
-import { setFields } from './actions/fields'
-import { setURL } from './actions/url'
-import store from './store'
+import { setFields } from '../actions/fields'
+import { setURL } from '../actions/url'
+import store from '../store'
 
 const utils = {}
 

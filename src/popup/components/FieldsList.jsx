@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { arrayOf, func, oneOfType, number, shape, string } from 'prop-types'
 import { ControlLabel, FormGroup, FormControl, Table } from 'react-bootstrap'
-import { updateField, updateNestedField } from './actions/fields'
-import utils from './utils'
+import { updateField, updateNestedField } from '../actions/fields'
+import utils from '../lib/utils'
 
 const mapStateToProps = state => {
   return {
@@ -83,6 +83,7 @@ const FieldsList = ({ dispatch, url, fields, visibleFields }) => {
 
 FieldsList.propTypes = {
   dispatch: func,
+  url: string,
   fields: arrayOf(
     shape({
       id: number,

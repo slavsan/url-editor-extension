@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { arrayOf, oneOfType, number, shape, string } from 'prop-types'
-import utils from './utils'
+import utils from '../lib/utils'
 import FieldsList from './FieldsList'
 import Toolbar from './Toolbar'
 

@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { arrayOf, func, oneOfType, number, shape, string } from 'prop-types'
 import { Button, FormGroup, InputGroup, FormControl } from 'react-bootstrap'
-import { updateFilter } from './actions/filter'
-import utils from './utils'
+import { updateFilter } from '../actions/filter'
+import utils from '../lib/utils'
 
 const mapStateToProps = state => {
   return {
