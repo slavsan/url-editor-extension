@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { oneOfType, number, shape, string } from 'prop-types'
+import { arrayOf, oneOfType, number, shape, string } from 'prop-types'
 import utils from './utils'
 import FieldsList from './FieldsList'
 import Toolbar from './Toolbar'
@@ -31,17 +31,21 @@ const App = ({ fields }) => {
 }
 
 App.propTypes = {
-  fields: shape({
-    id: number,
-    name: string,
-    value: oneOfType(
-      string,
-      shape({
-        key: string,
-        value: string
-      })
-    )
-  })
+  fields: arrayOf(
+    shape({
+      id: number,
+      name: string,
+      value: oneOfType([
+        string,
+        arrayOf(
+          shape({
+            key: string,
+            value: string
+          })
+        )
+      ])
+    })
+  )
 }
 
 export default connect(mapStateToProps)(App)

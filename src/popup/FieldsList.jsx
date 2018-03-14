@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { func, oneOfType, number, shape, string } from 'prop-types'
+import { arrayOf, func, oneOfType, number, shape, string } from 'prop-types'
 import { ControlLabel, FormGroup, FormControl, Table } from 'react-bootstrap'
 import { updateField, updateNestedField } from './actions/fields'
 
@@ -71,28 +71,36 @@ const FieldsList = ({ dispatch, fields, visibleFields }) => {
 
 FieldsList.propTypes = {
   dispatch: func,
-  fields: shape({
-    id: number,
-    name: string,
-    value: oneOfType(
-      string,
-      shape({
-        key: string,
-        value: string
-      })
-    )
-  }),
-  visibleFields: shape({
-    id: number,
-    name: string,
-    value: oneOfType(
-      string,
-      shape({
-        key: string,
-        value: string
-      })
-    )
-  })
+  fields: arrayOf(
+    shape({
+      id: number,
+      name: string,
+      value: oneOfType([
+        string,
+        arrayOf(
+          shape({
+            key: string,
+            value: string
+          })
+        )
+      ])
+    })
+  ),
+  visibleFields: arrayOf(
+    shape({
+      id: number,
+      name: string,
+      value: oneOfType([
+        string,
+        arrayOf(
+          shape({
+            key: string,
+            value: string
+          })
+        )
+      ])
+    })
+  )
 }
 
 export default connect(mapStateToProps)(FieldsList)
