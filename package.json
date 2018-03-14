@@ -37,8 +37,10 @@
   },
   "dependencies": {
     "prop-types": "^15.6.0",
-    "react": "^15.3.2",
+    "react": "^15.6.2",
     "react-bootstrap": "^0.30.7",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2"
   }
 }
