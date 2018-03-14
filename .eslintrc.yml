@@ -1,0 +1,20 @@
+extends:
+  - standard
+  - standard-react
+  - eslint:recommended
+plugins:
+  - standard
+rules:
+  jsx-quotes:
+    - "error"
+    - "prefer-double"
+  object-curly-spacing:
+    - "warn"
+    - "always"
+globals:
+  jest: true
+  beforeEach: true
+  describe: true
+  test: true
+  expect: true
+  it: true

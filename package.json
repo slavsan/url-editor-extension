@@ -1,0 +1,44 @@
+{
+  "name": "url-editor-extension",
+  "version": "1.0.0",
+  "description": "A browser extension for editing the URL in the address bar",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "build:dev": "webpack",
+    "lint": "eslint --ext .js --ext .jsx src test && echo '✓ All good'",
+    "watch": "webpack-dev-server --output-public-path=build --watch-poll --inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slavsan/url-editor-extension.git"
+  },
+  "author": "Slavcho Slavchev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slavsan/url-editor-extension/issues"
+  },
+  "homepage": "https://github.com/slavsan/url-editor-extension#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.3.2"
+  }
+}

@@ -1,0 +1,59 @@
+body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    min-width: 560px;
+}
+
+#app {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 560px;
+}
+
+.toolbar {
+  padding: 5px;
+  background: #eee;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.toolbar button {
+  background: cornflowerblue;
+  color: #fff;
+  text-shadow: none;
+  border: 1px solid transparent;
+}
+
+.toolbar input {
+  border-radius: .25rem;
+  margin-right: 5px;
+}
+
+.fields-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.no-results {
+  padding: 10px;
+}
+
+label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 0;
+}
+
+td:first-child {
+  width: 100px;
+}
+
+.table {
+  margin-bottom: 0;
+}
