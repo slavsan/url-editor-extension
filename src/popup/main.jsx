@@ -1,7 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Root from './Root'
+import utils from './lib/utils'
 
 document.addEventListener('DOMContentLoaded', () => {
-	render(<Root />, document.getElementById('app'))
+  utils.fetchUrlAndQueryStringFields()
+  render(<Root />, document.getElementById('app'))
 })

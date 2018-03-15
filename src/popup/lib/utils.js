@@ -45,6 +45,7 @@ utils.fetchUrlAndQueryStringFields = () => {
     const fields = utils.getFields(querystring)
     store.dispatch(setURL({ url: domainAndPath }))
     store.dispatch(setFields({ fields }))
+    store.dispatch({ type: 'LOADED' })
   })
 }
 
