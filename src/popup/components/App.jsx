@@ -1,19 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { arrayOf, oneOfType, number, shape, string } from 'prop-types'
-import utils from '../lib/utils'
+import { arrayOf, bool, oneOfType, number, shape, string } from 'prop-types'
 import FieldsList from './FieldsList'
 import Toolbar from './Toolbar'
 
-utils.fetchUrlAndQueryStringFields()
-
 const mapStateToProps = state => {
   return {
+    loaded: state.loaded,
     fields: state.fields
   }
 }
 
-const App = ({ fields }) => {
+const App = ({ loaded, fields }) => {
+  if (!loaded) {
+    return (
+      <div className="no-results">Loading ..</div>
+    )
+  }
+
   if (!fields || !fields.length) {
     return (
       <div className="no-results">The URL has no query string</div>
@@ -31,6 +35,7 @@ const App = ({ fields }) => {
 }
 
 App.propTypes = {
+  loaded: bool,
   fields: arrayOf(
     shape({
       id: number,
