@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { arrayOf, func, oneOfType, number, shape, string } from 'prop-types'
+import { arrayOf, func, string } from 'prop-types'
 import { ControlLabel, FormGroup, FormControl, Table } from 'react-bootstrap'
 import { updateField, updateNestedField } from '../actions/fields'
 import utils from '../lib/utils'
+import field from '../types/field'
 
 const mapStateToProps = state => {
   return {
@@ -87,34 +88,10 @@ FieldsList.propTypes = {
   dispatch: func,
   url: string,
   fields: arrayOf(
-    shape({
-      id: number,
-      name: string,
-      value: oneOfType([
-        string,
-        arrayOf(
-          shape({
-            key: string,
-            value: string
-          })
-        )
-      ])
-    })
+    field
   ),
   visibleFields: arrayOf(
-    shape({
-      id: number,
-      name: string,
-      value: oneOfType([
-        string,
-        arrayOf(
-          shape({
-            key: string,
-            value: string
-          })
-        )
-      ])
-    })
+    field
   )
 }
 

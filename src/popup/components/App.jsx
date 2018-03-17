@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { arrayOf, bool, oneOfType, number, shape, string } from 'prop-types'
+import { arrayOf, bool } from 'prop-types'
 import FieldsList from './FieldsList'
 import Toolbar from './Toolbar'
+import field from '../types/field'
 
 const mapStateToProps = state => {
   return {
@@ -37,19 +38,7 @@ const App = ({ loaded, fields }) => {
 App.propTypes = {
   loaded: bool,
   fields: arrayOf(
-    shape({
-      id: number,
-      name: string,
-      value: oneOfType([
-        string,
-        arrayOf(
-          shape({
-            key: string,
-            value: string
-          })
-        )
-      ])
-    })
+    field
   )
 }
 
