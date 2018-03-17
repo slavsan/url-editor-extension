@@ -1,9 +1,53 @@
 import utils from '../../src/popup/lib/utils'
 
 describe('utils', () => {
+  let originalChrome
+
+  beforeEach(() => {
+    originalChrome = global.chrome
+  })
+
+  afterEach(() => {
+    global.chrome = originalChrome
+  })
+
   describe('changeURL', () => {
-    it('..', () => {
-      expect(true).toEqual(true)
+    beforeEach(() => {
+      global.chrome = {
+        runtime: {
+          sendMessage: jest.fn()
+        }
+      }
+      utils.changeURL('new url')
+    })
+
+    it('changes the URL', () => {
+      expect(global.chrome.runtime.sendMessage).toBeCalledWith({
+        action: 'updateURL',
+        url: 'new url'
+      })
+    })
+  })
+
+  describe('buildURL', () => {
+    let buildQueryStringOriginal
+
+    beforeEach(() => {
+      buildQueryStringOriginal = utils.buildQueryString
+      utils.buildQueryString = jest.fn().mockReturnValue('built-querystring')
+    })
+
+    afterEach(() => {
+      utils.buildQueryString = buildQueryStringOriginal
+    })
+
+    it('builds the querystring from the fields', () => {
+      utils.buildURL('url', 'fields')
+      expect(utils.buildQueryString).toBeCalledWith('fields')
+    })
+
+    it('builds the url', () => {
+      expect(utils.buildURL('url', 'fields')).toEqual('url?built-querystring')
     })
   })
 
