@@ -7,11 +7,12 @@ import utils from '../lib/utils'
 import field from '../types/field'
 
 const mapStateToProps = state => {
+  const filter = state.filter.toLowerCase()
   return {
     url: state.url,
     fields: state.fields,
     visibleFields: state.fields.filter(f => {
-      return f.name.includes(state.filter)
+      return f.name.toLowerCase().includes(filter)
     })
   }
 }
