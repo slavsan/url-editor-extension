@@ -3,7 +3,7 @@ const url = (state = '', action) => {
   switch (action.type) {
     case 'SET_URL': {
       if (action.url) {
-        return action.url || ''
+        return action.url
       }
       return state
     }

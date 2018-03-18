@@ -1,4 +1,4 @@
-import utils from '../../src/popup/lib/utils'
+import utils from '../../../src/popup/lib/utils'
 
 describe('utils', () => {
   let originalChrome

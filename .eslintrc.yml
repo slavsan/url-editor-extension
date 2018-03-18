@@ -12,6 +12,7 @@ rules:
     - "warn"
     - "always"
 globals:
+  chrome: true
   jest: true
   beforeEach: true
   describe: true
